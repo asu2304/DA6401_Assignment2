@@ -21,3 +21,5 @@ and
 # and download data in current directory by running the following comand in terminal
 # wget https://storage.googleapis.com/wandb_datasets/nature_12K.zip
 # unzip nature_12K.zip
+
+# lets updated readme
