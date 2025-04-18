@@ -28,7 +28,6 @@ DA6401_Assignment2/
 │   ├── da6401-assignment-2-part-a.ipynb # Jupyter notebook for Part A
 │   ├── sweep_partA.py                   # Script to run W&B sweep (Part A)
 │   ├── test_evalution.py                # Script to evaluate best model (Part A)
-│   └── tempCodeRunnerFile.py            # (Temporary, can be ignored)
 │
 ├── Part B/
 │   ├── best_model.pth                   # Best model weights (Part B)
@@ -121,14 +120,14 @@ DA6401_Assignment2/
 ## How to Reproduce Results
 
 1. Clone this repository and install dependencies.
-2. Download and prepare the iNaturalist dataset.
+2. Download iNaturalist dataset.
 3. For Part A, run the sweep and evaluation scripts as shown above.
 4. For Part B, run the sweep script for fine-tuning.
 5. For detailed outputs and visualizations, refer to the Kaggle notebooks or W&B report.
 
 ---
 
-## Frequently Asked Questions
+## Potential Doubts: 
 
 - **Where is the main training code for Part A?**  
   All logic is in `sweep_partA.py`. No separate code for Q1; everything is modular and flexible as required.
