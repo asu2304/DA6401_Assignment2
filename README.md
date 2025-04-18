@@ -52,7 +52,11 @@ DA6401_Assignment2/
   ```bash
   pip install -r requirements.txt
   ```
-- Ensure you have access to the iNaturalist dataset and set up your data paths as needed.
+- Ensure you have access to the iNaturalist dataset and set up your data paths as needed, if not please run the following commands in your respective terminal before runing sweep files sweep_partA.py or sweep_partB.py
+  ```bash
+  wget https://storage.googleapis.com/wandb_datasets/nature_12K.zip
+  unzip nature_12K.zip
+  ```
 
 ### 2. **Running Experiments**
 
