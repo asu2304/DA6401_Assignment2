@@ -15,8 +15,8 @@ import wandb
 from tqdm import tqdm
 
 
-train_dir = "/kaggle/working/inaturalist_12K/train"  # Update as needed
-test_dir = "/kaggle/working/inaturalist_12K/train"
+train_dir = "inaturalist_12K/train"  # Update as needed
+test_dir = "inaturalist_12K/train"
 
 
 wandb.login(key='613aac3388325cb6206db61e3c1a38a707589743')

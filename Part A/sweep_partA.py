@@ -25,7 +25,7 @@ wandb.login(key='613aac3388325cb6206db61e3c1a38a707589743')
 
 import os
 # Dataset path
-data_dir = '/kaggle/working/inaturalist_12K'  # Update this path to your dataset
+data_dir = 'inaturalist_12K'  # Update this path to your dataset
 
 # Define the basic transform for the dataset (no normalization yet)
 transform = transforms.Compose([
@@ -75,7 +75,7 @@ test_transform = transforms.Compose([
 ])
 
 # Load dataset
-data_dir = '/kaggle/working/inaturalist_12K'  
+data_dir = 'inaturalist_12K'  
 train_dataset = datasets.ImageFolder(os.path.join(data_dir, 'train'), transform=train_transform)
 test_dataset = datasets.ImageFolder(os.path.join(data_dir, 'val'), transform=test_transform)
 

@@ -1,0 +1,12 @@
+wandb_version: 1
+
+augment:
+  value: false
+batch_size:
+  value: 32
+epochs:
+  value: 6
+freeze_strategy:
+  value: fc_only
+lr:
+  value: 0.0001
