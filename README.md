@@ -3,8 +3,8 @@
 
 
 # DA6401 - Assignment 2  
-**Author:** Siva Sankar S (ch20b103)  
-**Last Updated:** March 28, 2025
+**Author:** Ashutosh Patidar(DA24S006)  
+**Last Updated:** April 18, 2025
 
 ---
 
