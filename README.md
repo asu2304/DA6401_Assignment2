@@ -11,3 +11,13 @@ run the following command to get the data in the current directory: code:
 
 # import os
 # os.listdir('/kaggle/working/')
+
+
+# make sure to install all the libraries form requirements.txt
+
+and 
+
+
+# and download data in current directory by running the following comand in terminal
+# wget https://storage.googleapis.com/wandb_datasets/nature_12K.zip
+# unzip nature_12K.zip

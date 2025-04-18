@@ -1,5 +1,12 @@
 # importing from modularized utilities file 
 
+
+import sys
+import os
+
+# Adding the parent folder (which contains utilities.py) to the path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import torch
 from utilities import FlexibleCNN
 from utilities import validate

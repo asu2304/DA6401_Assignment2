@@ -1,24 +1,11 @@
 # note: for modularization, this file contains all the utilities needed in the main files.
 
+import os
 import torch
 import torch.nn as nn
+from torchvision import datasets, transforms
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-
-def validate(model, loader, criterion):
-    model.eval()
-    running_loss, correct, total = 0.0, 0, 0
-    with torch.no_grad():
-        for images, labels in loader:
-            images, labels = images.to(device), labels.to(device)
-            outputs = model(images)
-            loss = criterion(outputs, labels)
-            
-            running_loss += loss.item() * images.size(0)
-            _, preds = torch.max(outputs, 1)
-            correct += (preds == labels).sum().item()
-            total += labels.size(0)
-    return running_loss / total, correct / total
 
 
 class FlexibleCNN(nn.Module):
