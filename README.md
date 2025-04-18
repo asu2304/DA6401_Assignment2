@@ -3,7 +3,7 @@
 
 
 # DA6401 - Assignment 2  
-**Author:** Ashutosh Patidar(DA24S006)  
+**Author:** Ashutosh Patidar(da24s006)  
 **Last Updated:** April 18, 2025
 
 ---
