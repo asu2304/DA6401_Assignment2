@@ -1,44 +1,63 @@
-# importing relevant libs
+# importing from modularized utilities file 
 
 import torch
-from models import FlexibleCNN
+from utilities import FlexibleCNN
+from utilities import validate
+from torch.utils.data import DataLoader, random_split, Subset
+import os
+import torch.nn as nn
+from torchvision import datasets, transforms
 
-# import torch.nn as nn
-# import torch.nn.functional as F
-# from torchvision import datasets, transforms
-# from torch.utils.data import DataLoader, random_split, Subset
-# import numpy as np
-# import wandb
-# from tqdm import tqdm
-# import matplotlib.pyplot as plt
 
-# defining the best model 
-best_model = FlexibleCNN(
-        conv_filters=[256, 128, 64, 32, 16],
-        kernel_sizes=[3, 5, 3, 5, 3],
-        activation_fn_cnn='silu',
-        activation_fn_dense='silu',
-        dense_neurons=128,
-        dropout_p=0.3,
-        use_batchnorm=False,
-        input_size=input_size  # Critical for shape matching
-    ).to(device)
+def main():
+    # Set device
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    input_size = 224
 
-# Load the state dict from the saved model checkpoint with weights_only=True
-checkpoint = torch.load('best_model_wandb_config.pth', weights_only=True)
+    data_dir = 'inaturalist_12K' # Note that: path to data, you will get this data folder in current directory after running, data downloading command provided in readme file.
 
-# Modify the state_dict to only load the matching parameters
-model_state_dict = checkpoint['state_dict'] if 'state_dict' in checkpoint else checkpoint
+    test_transform = transforms.Compose([
+        transforms.Resize(input_size + 32),
+        transforms.CenterCrop(input_size),
+        transforms.ToTensor(),
+        transforms.Normalize([0.4791, 0.4623, 0.3902], [0.2388, 0.2271, 0.2351]) # same here as that of training data
+    ])
 
-# Match the layers between the checkpoint and the current model configuration
-model_state_dict = {k: v for k, v in model_state_dict.items() if k in best_model.state_dict() and v.shape == best_model.state_dict()[k].shape}
+    batch_size = 32
+    test_dataset = datasets.ImageFolder(os.path.join(data_dir, 'val'), transform=test_transform)
+    test_loader = DataLoader(test_dataset, batch_size, shuffle=False, num_workers=2, pin_memory=True)
 
-# Load the matching state_dict into the model with strict=False to allow for missing keys
-best_model.load_state_dict(model_state_dict, strict=False)
+    # defining the best model 
+    best_model = FlexibleCNN(
+            conv_filters=[256, 128, 64, 32, 16],
+            kernel_sizes=[3, 5, 3, 5, 3],
+            activation_fn_cnn='silu',
+            activation_fn_dense='silu',
+            dense_neurons=128,
+            dropout_p=0.3,
+            use_batchnorm=False,
+            input_size=input_size  # Critical for shape matching
+        ).to(device)
 
-# Set the model to evaluation mode
-best_model.eval()
+    # Load the state dict from the saved model checkpoint with weights_only=True
+    path = os.path.join('Part A', 'best_model_wandb_config.pth')
+    checkpoint = torch.load(path, map_location=device)
 
-# Evaluate on the test set
-test_loss, test_acc = validate(best_model, test_loader, nn.CrossEntropyLoss())
-print(f"Test Accuracy: {test_acc*100:.2f}%")
+    # Modify the state_dict to only load the matching parameters
+    model_state_dict = checkpoint['state_dict'] if 'state_dict' in checkpoint else checkpoint
+
+    # Match the layers between the checkpoint and the current model configuration
+    model_state_dict = {k: v for k, v in model_state_dict.items() if k in best_model.state_dict() and v.shape == best_model.state_dict()[k].shape}
+
+    # Load the matching state_dict into the model with strict=False to allow for missing keys
+    best_model.load_state_dict(model_state_dict, strict=False)
+
+    # Set the model to evaluation mode
+    best_model.eval()
+
+    # Evaluate on the test set
+    test_loss, test_acc = validate(best_model, test_loader, nn.CrossEntropyLoss())
+    print(f"Test Accuracy: {test_acc*100:.2f}%")
+
+if __name__ == '__main__':
+    main()
