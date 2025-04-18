@@ -76,7 +76,7 @@ DA6401_Assignment2/
   - Loads `best_model_wandb_config.pth` and evaluates on the test set.
 
 - **Notebook Reference:**  
-  - For a step-by-step implementation and outputs, see the [Kaggle notebook](https://www.kaggle.com/code/asu2304/da6401-assignment-2-part-a?scriptVersionId=234542588) or open `da6401-assignment-2-part-a.ipynb`.
+  - For a step-by-step implementation and outputs, see the [Kaggle notebook for Part A](https://www.kaggle.com/code/asu2304/da6401-assignment-2-part-a?scriptVersionId=234542588) or open `da6401-assignment-2-part-a.ipynb`.
 
 #### **Part B: Fine-Tune Pre-trained Model**
 - **Hyperparameter Sweep:**  
