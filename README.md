@@ -14,7 +14,7 @@ This repository contains solutions for DA6401 Assignment 2, which focuses on tra
 - **Part A:** Train a CNN from scratch and perform hyperparameter sweeps.
 - **Part B:** Fine-tune a pre-trained model (e.g., ResNet, VGG) on the same data.
 
-All code is written in Python using PyTorch and can be run on Colab with GPU support.
+All code is written in Python using PyTorch and can be run on Colab/Kaggle with GPU support.
 
 ---
 
