@@ -84,7 +84,7 @@ DA6401_Assignment2/
   ```bash
   python Part\ B/sweep_partB.py
   ```
-  - This script fine-tunes a pre-trained model (e.g., ResNet, VGG) using the best strategies found.
+  - This script fine-tunes a pre-trained model (e.g., ResNet, VGG) using the choosen strategies.
 
 - **Notebook Reference:**  
   - For implementation details and results, see the [Kaggle notebook for Part B](https://www.kaggle.com/code/asu2304/da6401-assignment-2-part-b#8.-Evaluate-Best-Model-on-Test-Set) or open `da6401-assignment-2-part-b.ipynb`.
